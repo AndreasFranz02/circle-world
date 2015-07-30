@@ -1,3 +1,0 @@
-<ns1:process xmlns:ns1="http://xmlns.oracle.com/TestProjectMaven/HelloWorld/BPELProcess1">
-    <ns1:input>Bla</ns1:input>
-</ns1:process>
