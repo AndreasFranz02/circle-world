@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>MyTestGroup</groupId>
+    <artifactId>ArtifactOne</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--<distributionManagement>
+        <repository>
+            <id>artifactory.opitz-consulting.int-releases</id>
+            <name>artifactory.opitz-consulting.int-releases</name>
+            <url>http://artifactory.opitz-consulting.int:80/artifactory/libs-releases-local</url>
+        </repository>
+    </distributionManagement>-->
+
+    <distributionManagement>
+
+        <repository>
+            <id>artifactory.opitz-consulting.int-releases</id>
+            <name>artifactory.opitz-consulting.int-releases</name>
+            <url>http://artifactory.opitz-consulting.int:80/artifactory/libs-releases-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>artifactory.opitz-consulting.int-snapshots</id>
+            <name>artifactory.opitz-consulting.int-snapshots</name>
+            <url>http://artifactory.opitz-consulting.int:80/artifactory/libs-snapshots-local</url>
+        </snapshotRepository>
+
+        <!-- use the following if you're deploying a release version.
+        <repository>
+            <id>deploy-releases</id>
+            <url>http://artifactory.opitz-consulting.int/artifactory/libs-releases-local</url>
+        </repository>
+         use the following if you you're deploying  a snapshot version.
+        <snapshotRepository>
+            <id>deploy-snapshots</id>
+            <url>http://artifactory.opitz-consulting.int/artifactory/libs-snapshots-local</url>
+        </snapshotRepository>-->
+    </distributionManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.opitz-consulting.soa</groupId>
+            <artifactId>soatesting</artifactId>
+            <version>12.1.3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- assertThat matcher
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+        </dependency>-->
+
+
+    </dependencies>
+
+
+
+    <!-- === Repositories === -->
+    <repositories>
+        <!-- MARK CONFIG -->
+        <repository>
+            <id>artifactory.opitz-consulting.int-releases</id>
+            <name>artifactory.opitz-consulting.int-releases</name>
+            <url>http://artifactory.opitz-consulting.int:80/artifactory/libs-releases-local</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>artifactory.opitz-consulting.int-snapshots</id>
+            <name>artifactory.opitz-consulting.int-snapshots</name>
+            <url>http://artifactory.opitz-consulting.int:80/artifactory/libs-snapshots-local</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+
+
+        <!-- ORIGINAL CONFIG -->
+        <repository>
+            <id>central</id>
+            <url>http://artifactory.opitz-consulting.int/artifactory/releases-only</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>snapshots</id>
+            <url>http://artifactory.opitz-consulting.int/artifactory/snapshots-only</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>http://artifactory.opitz-consulting.int/artifactory/releases-only</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>snapshots</id>
+            <url>http://artifactory.opitz-consulting.int/artifactory/snapshots-only</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.14.1</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <soa.adminPass>W61c0me1</soa.adminPass>
+                        <soa.adminPort>7001</soa.adminPort>
+                        <soa.adminUser>weblogic</soa.adminUser>
+                        <soa.adminHost>10.129.94.145</soa.adminHost>
+                        <soa.soaHost>10.129.94.145</soa.soaHost>
+                        <soa.soaPort>7004</soa.soaPort>
+                        <soa.soaPartition>connectiontest</soa.soaPartition>
+                        <soa.hteUser>weblogic</soa.hteUser>
+                        <soa.htePass>W61c0me1</soa.htePass>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+</project>
